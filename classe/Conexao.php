@@ -1,0 +1,33 @@
+final class Conexao{
+    private function_construct(){
+
+    }
+    private static function conectar(){
+    try{
+        if(!(defined('db_user'))){
+            define('db_user', 'root');
+        }
+        if(!(defined('db_host'))){
+            define('db_host', 'localhost');
+        }
+        if(!(defined('db_name'))){
+            define('db_name', 'Clinica');
+        }
+
+        if(!(defined('db_port'))){
+            define('db_port', '3360');
+        }
+
+        $db = new mysqli(db_host, db_user, db_pass, db_name, db_port);
+        return $db;
+    }catch (mysqli_sql_exception $ e){
+        $e->getMessage();
+    }
+}
+
+public static function query($sql){
+    return self::conectar()->query($sql);
+}
+
+}
+
