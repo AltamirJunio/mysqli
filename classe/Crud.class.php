@@ -1,8 +1,8 @@
 <?php
 abstract class Crud{
     protected $tabela;
-    abstract function iserir();
-    abstract function atualizar($campo, $id);
+    public abstract function iserir();
+    public abstract function atualizar($campo, $id);
     
 
 }
