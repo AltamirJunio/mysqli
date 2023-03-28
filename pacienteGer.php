@@ -15,6 +15,33 @@
     </header>
     <main>
 <div class="container">
+    <?php
+spl_autoload_register(function ($class){
+    require_once "./Classe/{$class}.class.php";
+
+    if(filter_has_var(INPUT_POST, 'btnGravar')){
+        if(isset($_FILES['filFoto'])){
+            $ext = strtolower(substr($_FILES['filFoto']['name'], -4));
+            $nomArq = md5(date('Y.m.d-H.i.s')) . $ext;
+            $local = "imagesPac/";
+            move_uploaded_file($_FILES['filFoto']['tmp_name'], $local . $nomArq);           
+           
+        }
+        $paciente = new Paciente();
+        $paciente->setNomePac(filter_input(INPUT_POST,'txtNome'));
+        $paciente->setEnderecoPac(filter_input(INPUT_POST,'txtEndereco'));
+        $paciente->setBairroPac(filter_input(INPUT_POST,'txtBairro'));
+        $paciente->setCidadePac(filter_input(INPUT_POST,'txtCidade'));
+        $paciente->setEstadoPac(filter_input(INPUT_POST,'txtEstado'));
+        $paciente->setCepPac(filter_input(INPUT_POST,'txtCep'));
+        $paciente->setNascimentoPac(filter_input(INPUT_POST,'txtNascimento'));
+        $paciente->setEmailPac(filter_input(INPUT_POST,'txtEmail'));
+        $paciente->setFotoPac($nomArq);
+        $paciente->iserir();
+    }
+});
+?>
+
 <form class="row g-3" action="<?php echo
 htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
 enctype="multipart/form-data">
