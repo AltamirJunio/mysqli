@@ -10,4 +10,11 @@ abstract class Crud{
         return Conexao::query($sqlSelect);
     }
 
+    public function buscar($campo, $id)
+    {
+        $selectSql = "select * from {$this->tabela} where $campo = {$id}";
+        $dados = Conexao::query($selectSql);
+        return $dados->fetch_object();
+    }
+
 }
