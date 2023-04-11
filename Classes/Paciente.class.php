@@ -243,7 +243,7 @@ class Paciente extends Crud
         $foto = $this->getFotoPac();
 
 
-        $sqlAtualizar = "UPDATE $this->tabela set nomePac = '$nome', enderecoPac = '$endereco', bairroPac = '$bairro', cidadePac = '$cidade', estadoPac = '$estado', cepPac = '$cep', nascimentoPac ='$nascimento', emailPac= '$email', celularPac ='$celular', fotoPac='$foto'";
+        $sqlAtualizar = "UPDATE $this->tabela set nomePac = '$nome', enderecoPac = '$endereco', bairroPac = '$bairro', cidadePac = '$cidade', estadoPac = '$estado', cepPac = '$cep', nascimentoPac ='$nascimento', emailPac= '$email', celularPac ='$celular', fotoPac='$foto' where idPac = '$id'";
 
         if (Conexao::query($sqlAtualizar)) {
             header('location: pacientes.php');
@@ -267,4 +267,17 @@ class Paciente extends Crud
 		$this->idPac = $idPac;
 		return $this;
 	}
+
+    public function deletar( $id)
+    {
+        
+
+        $sqlDeletar = "DELETE from $this->tabela  where idPac = '$id'";
+
+        if (Conexao::query($sqlDeletar)) {
+            header('location: pacientes.php');
+        }
+
+
+    }
 }

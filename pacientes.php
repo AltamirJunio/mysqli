@@ -66,14 +66,15 @@
                                     edit_square
                                 </span>
                             </a>
-                            <a href="#" class="btn btn-danger">
+                            <a href="pacienteGer.php?idDel="<?php echo
+                            $row->idPac?> class="btn btn-danger">
                                 <span class="material-symbols-outlined">
                                     delete
                                 </span>
                             </a>
                         </td>
                         <td>
-                            <img src="imagesPac/<?php echo $row->fotoPac;?>" alt="Foto do paciente <?php echo $row->nomePac; ?>" class="imgred">
+                            <img src="imagensPac/<?php echo $row->fotoPac;?>" alt="Foto do paciente <?php echo $row->nomePac; ?>" class="imgred">
                         </td>
                         <td><?php echo $row->nomePac; ?></td>
                         <td><?php echo $row->emailPac; ?></td>
