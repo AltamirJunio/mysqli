@@ -200,7 +200,7 @@ class Paciente extends Crud
     /**
      * @return mixed
      */
-    public function iserir()
+    public function inserir()
     {
         $nome = $this->getNomePac();
         $endereco = $this->getEnderecoPac();
@@ -251,4 +251,20 @@ class Paciente extends Crud
 
 
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getIdPac() {
+		return $this->idPac;
+	}
+	
+	/**
+	 * @param mixed $idPac 
+	 * @return self
+	 */
+	public function setIdPac($idPac): self {
+		$this->idPac = $idPac;
+		return $this;
+	}
 }
